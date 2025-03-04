@@ -2,12 +2,15 @@
 @plugin "daisyui";
 
 @theme {
-  --font-sans: '--font-open-sans';
-  --font-mono: '--font-montserrat'
+  --font-sans: var(--font-open-sans);
+  --font-mono: var(--font-montserrat);
 }
 
-* {
+body {
   font-family: var(--font-sans);
+  width: 100vw;
+  height: 100dvh;
+  overflow-x: hidden;
 }
 
 @plugin "daisyui/theme" {

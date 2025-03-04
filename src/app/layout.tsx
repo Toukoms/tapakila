@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
+import { Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "@/layout/Header";
+import Footer from "@/layout/Footer";
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
 });
 
-const notoMono = Noto_Sans_Mono({
-  variable: "--font-noto-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -25,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notoSans.variable} ${notoMono.variable} antialiased grid grid-rows-[auto_1fr_auto] min-h-screen`}
+        className={`${openSans.variable} ${montserrat.variable} antialiased grid grid-rows-[auto_1fr_auto] min-h-screen`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

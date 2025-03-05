@@ -27,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} ${montserrat.variable} antialiased grid grid-rows-[auto_1fr_auto] min-h-screen`}
+        className={`${openSans.variable} ${montserrat.variable} antialiased`}
       >
         <Header />
-        {children}
+        <div className="mt-20 md:mt-26 w-full max-w-full">{children}</div>
         <Footer />
       </body>
     </html>

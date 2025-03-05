@@ -9,7 +9,7 @@ function Header() {
     { name: "About Us", link: "/about" },
   ];
   return (
-    <header className="fixed top-0 left-0 z-50 w-full flex justify-between items-center px-12 py-8 bg-base-200">
+    <header className="fixed top-0 left-0 z-50 w-full flex justify-between items-center px-4 sm:px-6 md:px12 py-6 md:py-8 bg-base-200">
       <Image src="/logo.svg" alt="logo" width={32} height={32} />
       <label htmlFor="nav-menu" className="peer block sm:hidden">
         <input className="peer hidden" type="checkbox" id="nav-menu" />

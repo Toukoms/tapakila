@@ -22,10 +22,17 @@ async function EventDetail({ params }: SearchParamProps) {
   return (
     <div>
       <div className="hero">
-        <div className="hero-content">
-          <Image src={event.imageUrl} alt={`event_detail_${event.id}`} />
-          <div className="flex flex-col">
+        <div className="hero-content max-w-6xl w-full flex-col lg:flex-row items-start">
+          <Image
+            src={event.imageUrl}
+            alt={event.name}
+            className="w-full lg:w-1/2 max-h-80 lg:max-h-full object-cover rounded-md"
+            width={1280}
+            height={1028}
+          />
+          <div className="flex flex-col w-1/2">
             <h1 className="text-5xl font-bold font-mono">{event.name}</h1>
+            <p>{event.description}</p>
           </div>
         </div>
       </div>

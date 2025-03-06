@@ -33,7 +33,7 @@ type UrlQueryParams = {
 };
 
 type SearchParamProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 

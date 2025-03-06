@@ -6,6 +6,15 @@
   --font-mono: var(--font-montserrat);
 }
 
+* {
+  scroll-behavior: smooth;
+  scroll-margin-block-start: 5rem;
+
+  @media (width >=48rem) {
+    scroll-margin-block-start: 6.5rem;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   width: 100%;

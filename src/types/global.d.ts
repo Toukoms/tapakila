@@ -25,3 +25,19 @@ type Order = {
   event: IEvent;
   ticket: Ticket;
 };
+
+type UrlQueryParams = {
+  params: string;
+  key: string;
+  value: string | null;
+};
+
+type SearchParamProps = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+type RemoveUrlQueryParams = {
+  params: string;
+  keysToRemove: string[];
+};

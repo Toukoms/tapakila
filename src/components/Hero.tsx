@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -30,7 +31,9 @@ function Hero() {
             from around the world. Celebrate life, meet new friends, and create
             memories that last a lifetime. Your next adventure starts here!
           </p>
-          <button className="btn btn-secondary">Join the party</button>
+          <Link href={"/#events"} className="btn btn-secondary">
+            Join the party
+          </Link>
         </div>
       </div>
     </div>

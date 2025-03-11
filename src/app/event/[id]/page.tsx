@@ -1,6 +1,7 @@
 import Collection from "@/components/Collection";
 import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { BiInfoCircle } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 // import { BiInfoCircle } from "react-icons/bi";
@@ -76,9 +77,9 @@ async function EventDetail({ params }: SearchParamProps) {
                   <a>Early Bird</a>
                 </li>
                 <li className="bg-base-100 rounded-sm">
-                  <a className="flex items-center gap-2">
+                  <Link href="/#tickets" className="flex items-center gap-2">
                     <BiInfoCircle /> <span>Learn more</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

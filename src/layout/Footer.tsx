@@ -4,7 +4,7 @@ import { MdLocationPin, MdMailOutline, MdOutlinePhone } from "react-icons/md";
 
 function Footer() {
   return (
-    <footer className="footer footer-vertical gap-2 bg-base-300 text-base-content p-4 md:p-6 sm:p-10">
+    <footer className="footer footer-vertical gap-2 bg-base-300 text-base-content p-4 md:p-6 sm:p-10 mt-16 lg:mt-24">
       <div className="w-full flex flex-col justify-center items-center mb-4 bg-base-200 py-8 rounded-md">
         <p className="text-4xl text-center font-mono text-wrap w-full sm:w-1/2 md:w-1/3 mb-4">
           Want us to email you with the latest blockbuster news?

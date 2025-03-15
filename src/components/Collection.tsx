@@ -28,8 +28,9 @@ function Collection(props: CollectionProps) {
               id={d.id}
               name={d.name}
               imageUrl={d.imageUrl}
-              description={d.description}
               location={d.location}
+              description={d.description}
+              organizer={d.organizer}
               startDateTime={new Date(d.startDateTime)}
               endDateTime={new Date(d.endDateTime)}
             />

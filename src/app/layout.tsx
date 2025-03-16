@@ -3,6 +3,8 @@ import { Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
+import { SWRConfig } from "swr";
+import { fetcher } from "@/lib/fetcher";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -30,7 +32,13 @@ export default function RootLayout({
         className={`${openSans.variable} ${montserrat.variable} antialiased`}
       >
         <Header />
-        <div className="mt-20 md:mt-26 w-full max-w-full">{children}</div>
+        <SWRConfig
+          value={{
+            fetcher: fetcher,
+          }}
+        >
+          <div className="mt-20 md:mt-26 w-full max-w-full">{children}</div>
+        </SWRConfig>
         <Footer />
       </body>
     </html>

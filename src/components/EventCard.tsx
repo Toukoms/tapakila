@@ -40,7 +40,7 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
       </div>
 
       <div className="absolute top-4 left-4">
-        <span className="inline-flex items-center rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-primary-foreground">
+        <span className="inline-flex items-center rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-primary-content">
           {category}
         </span>
       </div>
@@ -67,7 +67,7 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
           </div>
 
           <div className="flex items-center text-sm text-muted-foreground">
-            <span className="font-medium italic text-primary-content/60">
+            <span className="font-medium italic text-base-content/60">
               Organizer:
             </span>
             <span className="ml-2 line-clamp-1 font-bold">{organizer}</span>
@@ -89,7 +89,7 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
           </div>
 
           <Link
-            href={`/event/${id}`}
+            href={`/events/${id}`}
             className={cn(
               "btn btn-sm cursor-pointer",
               isAvailable ? "btn-primary" : "btn-outline btn-secondary"

@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer footer-vertical gap-2 bg-base-300 text-base-content p-0 mt-16 lg:mt-24">
       <div className="w-full flex flex-col justify-center items-center mb-4 bg-primary py-12 rounded-md">
-        <p className="text-4xl text-center font-mono text-wrap w-full sm:w-1/2 md:w-1/3 mb-4">
+        <p className="text-4xl text-center text-primary-content font-mono text-wrap w-full sm:w-1/2 md:w-1/3 mb-4">
           Want us to email you with the latest blockbuster news?
         </p>
         <form method="post" className="join">

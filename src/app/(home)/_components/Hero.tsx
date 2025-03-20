@@ -29,10 +29,6 @@ function Hero() {
             placeholder="Search events, artists, venues..."
             className="input w-full rounded-full py-8 px-16"
           />
-          <div className="flex items-center gap-2 absolute right-28 top-1/2 -translate-y-1/2">
-            <kbd className="kbd kbd-sm ab">⌘</kbd>
-            <kbd className="kbd kbd-sm ab">K</kbd>
-          </div>
           <button className="btn absolute right-4 top-1/2 -translate-y-1/2 rounded-full h-10">
             Search
           </button>

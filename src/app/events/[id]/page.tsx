@@ -1,4 +1,4 @@
-import Collection from "@/components/Collection";
+// import EventsGrid from "@/components/EventsGrid";
 import Tickets from "@/components/Tickets";
 import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
@@ -95,7 +95,7 @@ async function EventDetail({ params }: SearchParamProps) {
           <h2 className="text-4xl font-bold font-mono mb-6">
             Related Category
           </h2>
-          <Collection
+          {/* <EventsGrid
             type={"Same_category"}
             totalPages={2}
             data={[
@@ -122,7 +122,7 @@ async function EventDetail({ params }: SearchParamProps) {
                 organizer: "Skate Crew",
               },
             ]}
-          />
+          /> */}
         </div>
       </div>
     </div>

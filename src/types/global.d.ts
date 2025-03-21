@@ -13,11 +13,14 @@ type IEvent = {
   endDateTime: string;
   location: string;
   organizer: string;
+  tickets: Ticket[];
+  categories: string[];
 };
 
 type Ticket = {
   type: "vip" | "standard" | "early_bird";
   price: number;
+  available: number;
 };
 
 type Order = {

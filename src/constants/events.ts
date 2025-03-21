@@ -1,69 +1,132 @@
-export const events = [
+export const events: IEvent[] = [
   {
     id: "1",
-    name: "Youth Music Festival",
+    name: "Music Festival",
     description:
-      "Join us for an exciting day of live music performances by emerging youth bands and artists.",
+      "Experience a weekend of live music, food, and fun with top artists from around the world.",
     imageUrl: "https://picsum.photos/200?random=1",
-    startDateTime: "2025-04-15T12:00:00",
-    endDateTime: "2025-04-15T18:00:00",
+    startDateTime: "2025-07-18T12:00:00",
+    endDateTime: "2025-07-20T23:00:00",
     location: "Central Park, New York",
-    organizer: "Youth Culture Collective",
+    organizer: "Music World",
+    tickets: [
+      {
+        type: "standard",
+        price: 100,
+        available: 100,
+      },
+      {
+        type: "vip",
+        price: 200,
+        available: 20,
+      },
+    ],
+    categories: ["Music", "Festival"],
   },
   {
     id: "2",
-    name: "Dance Battle Championship",
+    name: "Food Expo",
     description:
-      "Come and cheer for the best dancers as they battle it out for the title of the best youth dancer.",
+      "A culinary adventure featuring the best chefs and restaurants in the region, with cooking demos and tastings.",
     imageUrl: "https://picsum.photos/200?random=2",
-    startDateTime: "2025-05-10T14:00:00",
-    endDateTime: "2025-05-10T20:00:00",
-    location: "Los Angeles Youth Arena",
-    organizer: "Urban Moves",
+    startDateTime: "2025-08-15T10:00:00",
+    endDateTime: "2025-08-17T18:00:00",
+    location: "San Francisco Convention Center",
+    organizer: "Foodie Events",
+    tickets: [
+      {
+        type: "standard",
+        price: 50,
+        available: 50,
+      },
+    ],
+    categories: ["Food", "Expo"],
   },
   {
     id: "3",
-    name: "Street Art Showcase",
+    name: "Film Festival",
     description:
-      "A festival of creativity featuring live street art installations by talented young artists.",
+      "Join us for a week of movie premieres, panel discussions, and special events celebrating the art of cinema.",
     imageUrl: "https://picsum.photos/200?random=3",
-    startDateTime: "2025-06-05T10:00:00",
-    endDateTime: "2025-06-05T16:00:00",
-    location: "Downtown, Chicago",
-    organizer: "Creative Youth Society",
+    startDateTime: "2025-09-10T09:00:00",
+    endDateTime: "2025-09-17T23:00:00",
+    location: "Hollywood, CA",
+    organizer: "Cinephile Society",
+    tickets: [
+      {
+        type: "standard",
+        price: 75,
+        available: 30,
+      },
+      {
+        type: "vip",
+        price: 150,
+        available: 10,
+      },
+    ],
+    categories: ["Film", "Festival"],
   },
   {
     id: "4",
-    name: "Skateboard Showdown",
+    name: "Tech Conference",
     description:
-      "Watch the best young skateboarders show off their skills in a high-energy competition.",
+      "Discover the latest trends in technology and connect with industry experts and startups.",
     imageUrl: "https://picsum.photos/200?random=4",
-    startDateTime: "2025-07-01T12:00:00",
-    endDateTime: "2025-07-01T17:00:00",
-    location: "Venice Beach, California",
-    organizer: "Skate Crew",
+    startDateTime: "2025-10-05T08:00:00",
+    endDateTime: "2025-10-07T18:00:00",
+    location: "Moscone Center, San Francisco",
+    organizer: "Tech Connect",
+    tickets: [
+      {
+        type: "standard",
+        price: 150,
+        available: 100,
+      },
+      {
+        type: "vip",
+        price: 300,
+        available: 30,
+      },
+    ],
+    categories: ["Technology", "Conference"],
   },
   {
     id: "5",
-    name: "Youth Film Screening",
+    name: "Art Exhibition",
     description:
-      "A screening of short films created by young filmmakers showcasing their stories and visions.",
+      "An immersive showcase of contemporary art, featuring paintings, sculptures, and installations.",
     imageUrl: "https://picsum.photos/200?random=5",
-    startDateTime: "2025-08-10T18:00:00",
-    endDateTime: "2025-08-10T21:00:00",
-    location: "San Francisco Film Hub",
-    organizer: "Young Creators Network",
+    startDateTime: "2025-11-02T10:00:00",
+    endDateTime: "2025-11-05T18:00:00",
+    location: "Metropolitan Museum of Art",
+    organizer: "Art World",
+    tickets: [
+      {
+        type: "standard",
+        price: 25,
+        available: 50,
+      },
+    ],
+    categories: ["Art", "Exhibition"],
   },
   {
     id: "6",
-    name: "Poetry Slam Night",
+    name: "Sports Tournament",
     description:
-      "An open mic night where young poets share their words and compete for the title of best poet.",
+      "Cheer on your favorite teams and athletes in a thrilling competition of skill and teamwork.",
     imageUrl: "https://picsum.photos/200?random=6",
-    startDateTime: "2025-09-12T19:00:00",
-    endDateTime: "2025-09-12T22:00:00",
-    location: "Brooklyn Youth Center",
-    organizer: "Youth Voices",
+    startDateTime: "2025-12-10T13:00:00",
+    endDateTime: "2025-12-12T18:00:00",
+    location: "Madison Square Garden",
+    organizer: "Sports Unlimited",
+    tickets: [
+      {
+        type: "standard",
+        price: 75,
+        available: 20,
+      },
+    ],
+    categories: ["Sports", "Tournament"],
   },
   {
     id: "7",
@@ -75,6 +138,14 @@ export const events = [
     endDateTime: "2025-09-25T21:00:00",
     location: "Miami Youth Auditorium",
     organizer: "Future Stars Productions",
+    tickets: [
+      {
+        type: "standard",
+        price: 10,
+        available: 5,
+      },
+    ],
+    categories: ["Talent", "Show", "Youth"],
   },
   {
     id: "8",
@@ -86,17 +157,14 @@ export const events = [
     endDateTime: "2025-10-12T19:00:00",
     location: "Los Angeles Fashion District",
     organizer: "Teen Couture",
-  },
-  {
-    id: "9",
-    name: "Extreme Sports Festival",
-    description:
-      "An adrenaline-pumping event featuring youth athletes competing in BMX, parkour, and more.",
-    imageUrl: "https://picsum.photos/200?random=9",
-    startDateTime: "2025-11-01T10:00:00",
-    endDateTime: "2025-11-01T18:00:00",
-    location: "Austin, TX",
-    organizer: "Xtreme Youth Sports",
+    tickets: [
+      {
+        type: "standard",
+        price: 20,
+        available: 12,
+      },
+    ],
+    categories: ["Fashion", "Show", "Youth"],
   },
   {
     id: "10",
@@ -108,60 +176,13 @@ export const events = [
     endDateTime: "2025-11-20T17:00:00",
     location: "Seattle, WA",
     organizer: "Future Innovators",
-  },
-  {
-    id: "11",
-    name: "Youth Gaming Tournament",
-    description:
-      "Compete in an exciting gaming tournament, where youth players face off in popular video games.",
-    imageUrl: "https://picsum.photos/200?random=11",
-    startDateTime: "2025-12-03T12:00:00",
-    endDateTime: "2025-12-03T18:00:00",
-    location: "San Diego, CA",
-    organizer: "Gaming League",
-  },
-  {
-    id: "12",
-    name: "Youth Open Mic Night",
-    description:
-      "A chance for young musicians, poets, and performers to share their talents with a supportive audience.",
-    imageUrl: "https://picsum.photos/200?random=12",
-    startDateTime: "2025-12-15T19:00:00",
-    endDateTime: "2025-12-15T22:00:00",
-    location: "Chicago, IL",
-    organizer: "Teen Arts Collective",
-  },
-  {
-    id: "13",
-    name: "Youth Photography Contest",
-    description:
-      "Submit your best photo and compete for a chance to win exciting prizes and recognition.",
-    imageUrl: "https://picsum.photos/200?random=13",
-    startDateTime: "2025-12-18T10:00:00",
-    endDateTime: "2025-12-18T16:00:00",
-    location: "Washington, D.C.",
-    organizer: "Young Photographers Guild",
-  },
-  {
-    id: "14",
-    name: "Youth Theatre Production",
-    description:
-      "Enjoy a youth-led theatrical production, showcasing the creativity and talent of young actors.",
-    imageUrl: "https://picsum.photos/200?random=14",
-    startDateTime: "2025-12-20T19:00:00",
-    endDateTime: "2025-12-20T22:00:00",
-    location: "Atlanta, GA",
-    organizer: "Youth Theatre Alliance",
-  },
-  {
-    id: "15",
-    name: "Youth Adventure Camp",
-    description:
-      "Join us for an adventurous camp experience full of outdoor activities like hiking, rafting, and team-building games.",
-    imageUrl: "https://picsum.photos/200?random=15",
-    startDateTime: "2025-12-27T08:00:00",
-    endDateTime: "2025-12-27T17:00:00",
-    location: "Sedona, AZ",
-    organizer: "Youth Outdoors",
+    tickets: [
+      {
+        type: "standard",
+        price: 15,
+        available: 10,
+      },
+    ],
+    categories: ["Technology", "Expo", "Youth"],
   },
 ];

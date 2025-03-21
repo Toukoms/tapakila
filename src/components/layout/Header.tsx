@@ -5,7 +5,6 @@ function Header() {
   const navLinks = [
     { name: "Home", link: "/#" },
     { name: "Events", link: "/#events" },
-    { name: "Tickets", link: "/#tickets" },
     { name: "About Us", link: "/about" },
   ];
   return (

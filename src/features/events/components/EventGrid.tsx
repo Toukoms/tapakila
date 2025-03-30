@@ -1,5 +1,4 @@
 import React from "react";
-import EventCard from "./EventCard";
 import EventCardContainer from "../containers/EventCardContainer";
 
 interface EventGridProps {

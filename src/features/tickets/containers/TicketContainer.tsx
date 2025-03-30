@@ -1,8 +1,4 @@
-type TicketContainerProps = {
-  /* props definition */
-};
-
-function TicketContainer(props: TicketContainerProps) {
+function TicketContainer() {
   return <div>TicketContainer</div>;
 }
 

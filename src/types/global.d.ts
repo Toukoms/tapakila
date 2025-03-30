@@ -107,3 +107,14 @@ type SearchParamProps = {
     [key: string]: string | string[] | undefined;
   }>;
 };
+
+type UrlQueryParams = {
+  params: string;
+  key: string;
+  value: string | null;
+};
+
+type RemoveUrlQueryParams = {
+  params: string;
+  keysToRemove: string[];
+};

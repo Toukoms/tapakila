@@ -28,7 +28,7 @@ function Loader() {
       clearInterval(progressInterval);
       clearInterval(interval);
     };
-  }, []);
+  }, [loadingStates.length]);
 
   if (progress >= 100) return;
 

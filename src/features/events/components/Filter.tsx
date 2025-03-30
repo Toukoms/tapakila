@@ -1,13 +1,19 @@
 import { countries } from "@/constants/contries";
+import { cn } from "@/lib/utils";
 
-function Filter() {
+function Filter({ className }: { className?: string }) {
   // https://flagsapi.com/:country_code/:style/:size.png
 
   return (
-    <div className="w-full mb-6 border border-gray-100 dark:border-gray-600 p-3 md:pt-6 md:pl-6 sm:p-4 rounded-md grid grid-rows-3 sm:grid-rows-2 sm:grid-cols-2 md:grid-rows-1 md:grid-cols-[auto_auto_auto] md:justify-start gap-4">
+    <div
+      className={cn(
+        "w-full mb-8 border border-gray-400/60 dark:border-gray-100/60 p-3 sm:p-4 md:p-6 rounded-2xl grid grid-rows-3 sm:grid-rows-2 sm:grid-cols-2 md:grid-rows-1 md:grid-cols-[auto_auto_auto] md:justify-start gap-4",
+        className
+      )}
+    >
       <input
         type="search"
-        className="input max-sm:w-full"
+        className="input max-sm:w-full md:w-96"
         placeholder="Search by name"
       />
       <input

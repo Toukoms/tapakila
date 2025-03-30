@@ -5,21 +5,22 @@ import React from "react";
 import { MdLocationOn } from "react-icons/md";
 import { TbCalendarDue, TbClockHour3 } from "react-icons/tb";
 
-const EventCard: React.FC<IEvent & { className?: string }> = ({
+const EventCard: React.FC<EventProps & { className?: string }> = ({
   id,
-  name,
-  imageUrl,
-  startDateTime,
-  location,
-  categories,
-  organizer,
-  tickets,
+  title,
+  eventImage,
+  tag,
+  // ticketTypes,
+  host,
+  eventHall,
+  user,
+  startDate,
+  startTime,
   className,
 }) => {
-  const isAvailable = tickets.some((ticket) => ticket.available > 0);
-  const lowestPrice = Math.min(...tickets.map((ticket) => ticket.price));
-  const category = categories[0];
-  const { dateOnly, timeOnly } = formatDateTime(new Date(startDateTime));
+  // const isAvailable = ticketTypes.some((ticket) => ticket.availableTicket > 0);
+  // const lowestPrice = Math.min(...ticketTypes.map((ticket) => ticket.price));
+  const category = tag.title;
   return (
     <div
       className={cn(
@@ -29,8 +30,8 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
     >
       <div className="aspect-[16/9] w-full overflow-hidden relative">
         <Image
-          src={imageUrl}
-          alt={name}
+          src={eventImage}
+          alt={title}
           className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
           width={1280}
@@ -47,36 +48,45 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
 
       <div className="p-5">
         <h3 className="line-clamp-1 text-xl font-semibold tracking-tight mb-2">
-          {name}
+          {title}
         </h3>
 
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-sm text-muted-foreground">
             <TbCalendarDue className="mr-2 h-4 w-4" />
-            <span>{dateOnly}</span>
+            <span>{startDate}</span>
           </div>
 
           <div className="flex items-center text-sm text-muted-foreground">
             <TbClockHour3 className="mr-2 h-4 w-4" />
-            <span>{timeOnly}</span>
+            <span>{startTime}</span>
           </div>
 
           <div className="flex items-center text-sm text-muted-foreground">
             <MdLocationOn className="mr-2 h-4 w-4" />
-            <span className="line-clamp-1">{location}</span>
+            <span className="line-clamp-1">
+              {eventHall.name}, {host.name}
+            </span>
           </div>
 
           <div className="flex items-center text-sm text-muted-foreground">
             <span className="font-medium italic text-base-content/60">
               Organizer:
             </span>
-            <span className="ml-2 line-clamp-1 font-bold">{organizer}</span>
+            <span className="ml-2 line-clamp-1 font-bold">{user.name}</span>
           </div>
         </div>
 
         <div className="flex items-center justify-between mt-auto z-50">
           <div className="text-sm">
-            {isAvailable ? (
+            <span className="font-medium">
+              From{" "}
+              <span className="text-primary font-semibold">
+                500
+                {/* ${lowestPrice.toFixed(2)} */}
+              </span>
+            </span>
+            {/* {isAvailable ? (
               <span className="font-medium">
                 From{" "}
                 <span className="text-primary font-semibold">
@@ -84,18 +94,21 @@ const EventCard: React.FC<IEvent & { className?: string }> = ({
                 </span>
               </span>
             ) : (
-              <span className="text-destructive font-medium">Sold Out</span>
-            )}
+              <span className="text-destructive font-medium line-through">
+                Sold Out
+              </span>
+            )} */}
           </div>
 
           <Link
             href={`/events/${id}`}
             className={cn(
-              "btn btn-sm cursor-pointer",
-              isAvailable ? "btn-primary" : "btn-outline btn-secondary"
+              "btn btn-sm cursor-pointer"
+              // isAvailable ? "btn-primary" : "btn-outline btn-secondary"
             )}
           >
-            {isAvailable ? "Get Tickets" : "View Details"}
+            Get Tickets
+            {/* {isAvailable ? "Get Tickets" : "View Details"} */}
           </Link>
         </div>
       </div>

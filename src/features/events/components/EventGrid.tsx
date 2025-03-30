@@ -1,18 +1,20 @@
 import React from "react";
 import EventCard from "./EventCard";
+import EventCardContainer from "../containers/EventCardContainer";
 
-interface EventsGridProps {
-  events: IEvent[];
+interface EventGridProps {
+  data: string[];
   totalData: number;
 }
 
-const EventsGrid: React.FC<EventsGridProps> = ({ events, totalData }) => {
+const EventGrid: React.FC<EventGridProps> = ({ data, totalData }) => {
+  console.log(data);
+
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {events.map((event) => (
-          <EventCard key={`event_${event.id}`} {...event} />
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
+        {data.length > 0 &&
+          data.map((id) => <EventCardContainer key={`event_${id}`} id={id} />)}
       </div>
       {totalData > 6 && (
         <div className="join">
@@ -28,4 +30,4 @@ const EventsGrid: React.FC<EventsGridProps> = ({ events, totalData }) => {
   );
 };
 
-export default EventsGrid;
+export default EventGrid;

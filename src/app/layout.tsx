@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import SWRProvider from "./provider/swr-provider";
+import SWRProvider from "../providers/swr-provider";
+import Header from "@/layout/Header";
+import Footer from "@/layout/Footer";
+import Loader from "@/components/Loader";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <Header />
         <SWRProvider>
+          <Loader />
           <div className="mt-20 md:mt-26 w-full max-w-full">{children}</div>
         </SWRProvider>
         <Footer />

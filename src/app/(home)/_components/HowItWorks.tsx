@@ -22,8 +22,8 @@ function Step({ icon, title, description }: StepProps) {
 
 export function HowItWorks() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto">
+    <section className="py-12 md:py-18">
+      <div className="container mx-auto flex flex-col items-center justify-center">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">
             How It Works
@@ -33,7 +33,7 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-6xl">
           <Step
             icon={<BiSearch className="h-6 w-6" />}
             title="Find Events"

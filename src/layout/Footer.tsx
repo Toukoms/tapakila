@@ -25,7 +25,7 @@ function Footer() {
 
       <div className="w-full p-4 sm:p-10 md:p-16 mb-4 gap-6 sm:gap-0 grid grid-cols-1 grid-rows-[auto_auto] sm:grid-rows-1 md:grid-cols-2 xl:grid-cols-[60%_40%]">
         <aside className="flex items-center sm:items-start flex-row sm:flex-col gap-4">
-          <Image src="/logo.svg" alt="logo" width={64} height={64} />
+          <Image src="/logo.png" alt="logo" width={128} height={48} />
           <p>
             ACME Industries Ltd.
             <br />

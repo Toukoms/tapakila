@@ -20,9 +20,9 @@ function Loader() {
           clearInterval(interval);
           return prevProgress;
         }
-        return prevProgress + 1;
+        return prevProgress + 10;
       });
-    }, 30);
+    }, 200);
 
     return () => {
       clearInterval(progressInterval);

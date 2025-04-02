@@ -24,7 +24,7 @@ function Hero() {
         </p>
 
         <div className="relative w-full max-w-lg flex items-center mb-4">
-          <LuSearch className="absolute left-4 top-1/2 h-8 w-8 z-50 -translate-y-1/2 text-base-content" />
+          <LuSearch className="absolute left-4 top-1/2 h-8 w-8 z-20 -translate-y-1/2 text-base-content" />
           <input
             placeholder="Search events, artists, venues..."
             className="input w-full rounded-full py-8 px-16"

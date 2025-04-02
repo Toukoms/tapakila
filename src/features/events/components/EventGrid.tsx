@@ -7,8 +7,6 @@ interface EventGridProps {
 }
 
 const EventGrid: React.FC<EventGridProps> = ({ data, totalData }) => {
-  console.log(data);
-
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">

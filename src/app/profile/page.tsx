@@ -1,5 +1,11 @@
+import UserProfile from "./_components/UserProfile";
+
 function ProfilePage() {
-  return <div>ProfilePage</div>;
+  return (
+    <div>
+      <UserProfile />
+    </div>
+  );
 }
 
 export default ProfilePage;

@@ -1,19 +1,15 @@
 import EventDetailContainer from "../_containers/EventDetailContainer";
+import ReturnBack from "../components/ReturnBack";
 
 async function EventDetailPage({ params }: SearchParamProps) {
   const { id } = await params;
   if (!id) return;
 
   return (
-    <div>
-      <div className="w-[95vw] md:w-[90vw] mx-auto">
+    <div className="container p-4 mx-auto">
+      <ReturnBack className="my-4 md:my-8" />
+      <div>
         <EventDetailContainer id={id} />
-
-        <div className="w-full mb-12">
-          <h2 className="text-4xl font-bold font-mono mb-6">
-            Related Category
-          </h2>
-        </div>
       </div>
     </div>
   );

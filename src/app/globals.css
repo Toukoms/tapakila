@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 @plugin "daisyui";
 
 @theme {
@@ -64,7 +67,6 @@ body {
   --noise: 0;
 }
 
-
 @plugin "daisyui/theme" {
   name: "dark";
   default: false;
@@ -99,3 +101,6 @@ body {
   --depth: 1;
   --noise: 0;
 }
+
+@import "uploadthing/tw/v4";
+@source "../../node_modules/@uploadthing/react/dist/";

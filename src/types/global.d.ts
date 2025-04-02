@@ -108,13 +108,9 @@ type SearchParamProps = {
   }>;
 };
 
-type UrlQueryParams = {
-  params: string;
-  key: string;
-  value: string | null;
-};
-
-type RemoveUrlQueryParams = {
-  params: string;
-  keysToRemove: string[];
+type UserPayload = {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
 };

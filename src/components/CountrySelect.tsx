@@ -39,13 +39,14 @@ const CountrySelect = ({
 
       {query && isOpen && (
         <ul className="absolute w-full mt-1 max-h-60 overflow-auto border rounded-md shadow-lg z-10 bg-base-300">
-          {filteredCountries.map((country: any) => (
+          {filteredCountries.map((country) => (
             <li
               key={`${country.label} ${country.value}`}
               className="cursor-pointer p-2"
               onClick={() => {
+                if (onSelect && typeof onSelect === "function")
+                  onSelect(country.label);
                 setQuery(country.label);
-                onSelect && onSelect(country.label);
                 setIsOpen(false);
               }}
             >

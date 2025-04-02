@@ -4,7 +4,6 @@ import CountrySelect from "@/components/CountrySelect";
 import ImageUploader from "@/components/ImageUploader";
 import { login } from "@/lib/auth";
 import { useUploadThing } from "@/lib/uploadthing";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { use, useState } from "react";
 import { toast } from "react-toastify";
@@ -32,10 +31,16 @@ function RegisterPage({ searchParams }: SearchParamProps) {
     let imageUrl = "";
 
     if (file) {
-      const uploadedImage = await startUpload([file]);
-      if (!uploadedImage) return;
-      imageUrl = uploadedImage[0].ufsUrl;
-      console.log("Uploaded: ", imageUrl);
+      try {
+        const uploadedImage = await startUpload([file]);
+        if (!uploadedImage) return;
+        imageUrl = uploadedImage[0].ufsUrl;
+        console.log("Uploaded: ", imageUrl);
+      } catch (e) {
+        console.error(e);
+        setLoading(false);
+        return;
+      }
     }
 
     const username = formaData.get("username") as string;
@@ -101,6 +106,7 @@ function RegisterPage({ searchParams }: SearchParamProps) {
         toast.success("Registration successful");
         window.location.reload();
       } catch (error) {
+        console.error("Failed to login", error);
         toast.error("Failed to login. Please try again!");
       }
 
@@ -121,7 +127,7 @@ function RegisterPage({ searchParams }: SearchParamProps) {
           <div className="flex flex-col items-center justify-center w-full text-center">
             <ImageUploader setFile={setFile} />
             <p className="mt-4 font-semibold">Upload your image profile</p>
-            <label className="text-sm text-base-content/50">Max size 2MB</label>
+            <label className="text-sm text-base-content/50">Max size 8MB</label>
           </div>
           <div>
             <label

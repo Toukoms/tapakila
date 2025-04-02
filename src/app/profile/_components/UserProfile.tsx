@@ -1,4 +1,5 @@
 import { getSession } from "@/lib/auth";
+import Image from "next/image";
 import React from "react";
 import { LuCalendar, LuTicket } from "react-icons/lu";
 
@@ -16,7 +17,7 @@ const UserProfile = async () => {
         <div tabIndex={0} role="button" className="avatar select-none">
           <div className="w-24 h-24 rounded-full">
             {imageUrl ? (
-              <img src={imageUrl} alt={user.name} />
+              <Image src={imageUrl} alt={user.name} />
             ) : (
               <div className="flex items-center justify-center bg-primary font-bold w-full h-full text-primary-content">
                 {user.username.slice(0, 2).toUpperCase()}

@@ -1,5 +1,6 @@
 "use client";
 import { getSession, logout } from "@/lib/auth";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -19,7 +20,7 @@ function AuthBtn() {
           >
             <div className="w-12 h-12 rounded-full">
               {user.imageUrl ? (
-                <img src={user.imageUrl} alt={user.name} />
+                <Image src={user.imageUrl} alt={user.name} />
               ) : (
                 <div className="flex items-center justify-center bg-primary font-bold w-full h-full text-primary-content">
                   {user.username.slice(0, 2).toUpperCase()}

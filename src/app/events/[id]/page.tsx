@@ -1,5 +1,6 @@
 import EventDetailContainer from "../_containers/EventDetailContainer";
-import ReturnBack from "../components/ReturnBack";
+import ReturnBack from "../_components/ReturnBack";
+import BuyTickets from "../_components/BuyTickets";
 
 async function EventDetailPage({ params }: SearchParamProps) {
   const { id } = await params;
@@ -10,6 +11,7 @@ async function EventDetailPage({ params }: SearchParamProps) {
       <ReturnBack className="my-4 md:my-8" />
       <div>
         <EventDetailContainer id={id} />
+        <BuyTickets eventId={id} />
       </div>
     </div>
   );

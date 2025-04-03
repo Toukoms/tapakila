@@ -79,6 +79,7 @@ type TicketTypeProps = {
   title: string;
   slug: string;
   description: string;
+  totalTicket: number;
   availableTicket: number;
   price: number;
   currency: CurrencyProps;

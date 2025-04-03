@@ -2,7 +2,7 @@
 import Error from "@/components/Error";
 
 import useSWR from "swr";
-import EventDetail from "../components/EventDetail";
+import EventDetail from "../_components/EventDetail";
 
 function EventDetailContainer({ id }: { id: string }) {
   const { data, error, isLoading } = useSWR(`/events/${id}`);

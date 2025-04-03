@@ -46,11 +46,21 @@ function BuyTickets({ eventId }: { eventId: string }) {
   );
 
   const ticketsToBuy: TicketTypeWithQts[] = useMemo(() => {
-    return data ? data.map((ticket: any) => ({ ...ticket, quantity: 0 })) : [];
+    return data
+      ? (data as TicketTypeProps[]).map((ticket) => ({
+          ...ticket,
+          quantity: 0,
+        }))
+      : [];
   }, [data]);
 
   const [ticketsToBuyState, dispatch] = useReducer(reducer, [], () => {
-    return data ? data.map((ticket: any) => ({ ...ticket, quantity: 0 })) : [];
+    return data
+      ? (data as TicketTypeProps[]).map((ticket) => ({
+          ...ticket,
+          quantity: 0,
+        }))
+      : [];
   });
 
   useEffect(() => {

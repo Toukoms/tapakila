@@ -1,11 +1,10 @@
 import TicketsContainer from "@/features/tickets/containers/TicketsContainer";
 import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
-import { BiInfoCircle } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 
 function EventDetail({
+  id,
   title,
   eventImage,
   description,
@@ -16,9 +15,10 @@ function EventDetail({
   eventHall,
   host,
   user,
+  tag,
 }: EventProps) {
   return (
-    <div className="w-full grid gap-4 grid-cols-1 lg:grid-rows-2 lg:grid-cols-2 xl:grid-rows-1 xl:grid-cols-[30%_1fr_28%] mb-8 pt-4 lg:pt-8">
+    <div className="w-full grid gap-4 grid-cols-1 lg:grid-rows-[1fr_auto] lg:grid-cols-2 xl:grid-rows-1 xl:grid-cols-[30%_1fr_28%] mb-8 pt-4 lg:pt-8">
       <Image
         src={eventImage}
         alt={title}
@@ -38,46 +38,19 @@ function EventDetail({
               {endTime} {formatDateTime(new Date(endDate)).dateOnly}
             </span>
           </p>
-          <p className="badge badge-soft badge-secondary mb-4">
-            <CiLocationOn />
+          <p className="badge badge-lg badge-soft badge-primary mb-4">
+            {tag.title}
+          </p>
+          <p className="font-bold text-lg flex gap-2 items-center">
+            <CiLocationOn size={18} />
             {eventHall.name}, {host.name}
           </p>
           <p className="mb-6 line-clamp-6">{description}</p>
           <p className="font-bold font-mono">By - {user.name}</p>
         </div>
-        <div>
-          <div className="dropdown dropdown-hover">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-lg btn-secondary m-1"
-            >
-              Checkout
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 shadow-sm"
-            >
-              <li>
-                <a>VIP</a>
-              </li>
-              <li>
-                <a>Standard</a>
-              </li>
-              <li>
-                <a>Early Bird</a>
-              </li>
-              <li className="bg-base-100 rounded-sm">
-                <Link href="/#tickets" className="flex items-center gap-2">
-                  <BiInfoCircle /> <span>Learn more</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
 
-      <TicketsContainer />
+      <TicketsContainer eventId={id} />
     </div>
   );
 }

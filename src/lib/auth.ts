@@ -34,12 +34,12 @@ export async function logout() {
   cookieStore.delete("session");
 }
 
-export async function getSession() {
+export async function getUser() {
   const cookieStore = await cookies();
   const session = cookieStore.get("session");
   if (!session) return null;
   const userSession = await decrypt(session.value);
-  const res = await fetch(BASE_URL + "/users/" + userSession.id);
+  const res = await fetch(`${BASE_URL}/users/${userSession.id}`);
   if (res.status == 200) {
     return (await res.json()) as UserProps;
   }

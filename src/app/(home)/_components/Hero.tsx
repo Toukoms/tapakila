@@ -44,7 +44,7 @@ function Hero() {
             className="input w-full rounded-full py-8 px-16"
           />
           <Link
-            href={search ? `/events?q=${search}` : ""}
+            href={search ? `/events?search=${search}` : ""}
             className="flex items-center justify-center absolute right-4 top-1/2 bg-base-300 px-4 shadow-inner shadow-base-content/20 cursor-pointer text-base-content/60 -translate-y-1/2 rounded-full h-10"
           >
             Search

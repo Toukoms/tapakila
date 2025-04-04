@@ -11,27 +11,27 @@ const team = [
   {
     name: "ANDRIVOLOLONTIANA Jenifère Vaninah",
     role: "Frontend Developer",
-    image: "/team/marc.jpg",
+    image: "https://i.pravatar.cc/150?img=15",
     description:
       "Developing the front-end of the admin dashboard for the events app Tapakila.",
   },
   {
     name: "Tsilavina ANDRIAMIHARISON",
     role: "FullStack Developer",
-    image: "/team/hanta.jpg",
+    image: "https://i.pravatar.cc/150?img=32",
     description:
       "Designs intuitive and visually appealing UI/UX for the app and assist in development.",
   },
   {
     name: "ANDRIAMANOHINIAINA Herison Jean Freddy",
     role: "Backend Developer",
-    image: "/team/koto.jpg",
+    image: "https://i.pravatar.cc/150?img=45",
     description: "Create database and API for the events app Tapakila.",
   },
   {
     name: "RANDRIANIRINA Nomena Fitahiana Fandresena",
     role: "Backend Developer",
-    image: "/team/lova.jpg",
+    image: "https://i.pravatar.cc/150?img=52",
     description:
       "Create endpoints and manage database for the events app Tapakila.",
   },

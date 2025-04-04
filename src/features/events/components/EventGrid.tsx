@@ -23,7 +23,7 @@ const EventGrid = ({ type }: { type: "feat" | "all" }) => {
         ))}
       </div>
 
-      {totalPages > 1 && events.length > 6 && (
+      {totalPages > 1 && events.length >= 6 && (
         <div className="join grid grid-cols-2 w-64 mx-auto mt-8">
           <button
             onClick={() => {

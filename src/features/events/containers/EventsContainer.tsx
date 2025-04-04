@@ -2,7 +2,7 @@
 import useSWR from "swr";
 import EventGrid from "../components/EventGrid";
 import useEventStore from "@/store/events";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function EventsContainer() {
   const { error, data, isLoading } = useSWR("/events/allEventsId");
@@ -28,9 +28,7 @@ export default function EventsContainer() {
       ) : error ? (
         <p>Error getting Events</p>
       ) : data && data.length > 0 ? (
-        <Suspense fallback={<div>Loading events...</div>}>
-          <EventGrid type="all" />
-        </Suspense>
+        <EventGrid type="all" />
       ) : (
         <div className="text-center">
           <p className="text-xl font-medium mb-4">No events for the moment</p>

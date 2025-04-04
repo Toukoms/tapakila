@@ -5,6 +5,7 @@ import SWRProvider from "../providers/swr-provider";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
 import Loader from "@/components/Loader";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -34,7 +35,9 @@ export default function RootLayout({
         <Header />
         <SWRProvider>
           <Loader />
-          <div className="mt-20 md:mt-26 w-full max-w-full">{children}</div>
+          <div className="mt-20 md:mt-26 w-full max-w-full">
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </div>
         </SWRProvider>
         <Footer />
       </body>

@@ -10,7 +10,7 @@ const EventCard: React.FC<EventProps & { className?: string }> = ({
   title,
   eventImage,
   tag,
-  // ticketTypes,
+  ticketTypes,
   host,
   eventHall,
   user,
@@ -18,8 +18,12 @@ const EventCard: React.FC<EventProps & { className?: string }> = ({
   startTime,
   className,
 }) => {
-  // const isAvailable = ticketTypes.some((ticket) => ticket.availableTicket > 0);
-  // const lowestPrice = Math.min(...ticketTypes.map((ticket) => ticket.price));
+  const isAvailable = ticketTypes.some((ticket) => ticket.availableTicket > 0);
+  const lowestPrice = Math.min(...ticketTypes.map((ticket) => ticket.price));
+  const ticketsLeft = ticketTypes.reduce(
+    (acc, ticket) => acc + Number(ticket.availableTicket),
+    0
+  );
   const category = tag.title;
   return (
     <div
@@ -80,30 +84,25 @@ const EventCard: React.FC<EventProps & { className?: string }> = ({
 
           <div className="flex items-center justify-between mt-auto z-50">
             <div className="text-sm">
-              <span className="font-medium">
-                From{" "}
-                <span className="text-primary font-semibold">
-                  500
-                  {/* ${lowestPrice.toFixed(2)} */}
+              {isAvailable ? (
+                <span>
+                  From{" "}
+                  <span className="text-secondary text-lg font-semibold">
+                    {lowestPrice} {ticketTypes[0].currency.title}
+                  </span>
                 </span>
-              </span>
-              {/* {isAvailable ? (
-              <span className="font-medium">
-                From{" "}
-                <span className="text-primary font-semibold">
-                  ${lowestPrice.toFixed(2)}
+              ) : (
+                <span className="text-destructive font-medium line-through">
+                  Sold Out
                 </span>
-              </span>
-            ) : (
-              <span className="text-destructive font-medium line-through">
-                Sold Out
-              </span>
-            )} */}
+              )}
             </div>
 
             <p className="text-sm font-semibold text-warning flex items-center justify-center">
               <MdWarning size={18} className="mr-1" />{" "}
-              <span className="leading-0">Ticket left: 20</span>
+              <span className="leading-0">
+                {ticketsLeft} Ticket{ticketsLeft > 1 ? "s" : ""} left
+              </span>
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { login } from "@/lib/auth";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { use, useState } from "react";
 import { toast } from "react-toastify";
@@ -33,8 +34,9 @@ function LoginPage({ searchParams }: SearchParamProps) {
       toast.success("Login successful");
       if (url) {
         router.replace(url as string);
+      } else {
+        window.location.reload();
       }
-      window.location.reload();
     } else {
       toast.error("Failed to login. Please try again!");
     }
@@ -83,9 +85,9 @@ function LoginPage({ searchParams }: SearchParamProps) {
         </form>
         <p className="mt-6">
           Don&apos;t have an account?{" "}
-          <a href="/register" className="link">
+          <Link href={`/register?url=${url}`} className="link">
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </section>

@@ -5,33 +5,33 @@ const team = [
   {
     name: "RAHAJANIRINA Fanomezantsoa Tokiniaina",
     role: "Frontend Developer",
-    image: "https://i.pravatar.cc/150?img=12",
+    image: "https://avatar.iran.liara.run/public/boy",
     description: "Developing the front-end of the events app Tapakila",
   },
   {
     name: "ANDRIVOLOLONTIANA Jenifère Vaninah",
     role: "Frontend Developer",
-    image: "https://i.pravatar.cc/150?img=15",
+    image: "https://avatar.iran.liara.run/public/girl",
     description:
       "Developing the front-end of the admin dashboard for the events app Tapakila.",
   },
   {
     name: "Tsilavina ANDRIAMIHARISON",
     role: "FullStack Developer",
-    image: "https://i.pravatar.cc/150?img=32",
+    image: "https://avatar.iran.liara.run/public/boy",
     description:
       "Designs intuitive and visually appealing UI/UX for the app and assist in development.",
   },
   {
     name: "ANDRIAMANOHINIAINA Herison Jean Freddy",
     role: "Backend Developer",
-    image: "https://i.pravatar.cc/150?img=45",
+    image: "https://avatar.iran.liara.run/public/boy",
     description: "Create database and API for the events app Tapakila.",
   },
   {
     name: "RANDRIANIRINA Nomena Fitahiana Fandresena",
     role: "Backend Developer",
-    image: "https://i.pravatar.cc/150?img=52",
+    image: "https://avatar.iran.liara.run/public/girl",
     description:
       "Create endpoints and manage database for the events app Tapakila.",
   },
@@ -45,7 +45,7 @@ export default function AboutUs() {
         {team.map((member, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
+            className="border rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
           >
             <img
               src={member.image}
@@ -53,8 +53,8 @@ export default function AboutUs() {
               className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             />
             <h3 className="text-xl font-semibold">{member.name}</h3>
-            <p className="text-sm text-gray-500">{member.role}</p>
-            <p className="mt-3 text-gray-700">{member.description}</p>
+            <p className="text-sm text-base-content/80">{member.role}</p>
+            <p className="mt-3 text-base-content/60">{member.description}</p>
           </div>
         ))}
       </div>

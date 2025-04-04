@@ -13,18 +13,17 @@ const EventGrid = ({ type }: { type: "feat" | "all" }) => {
   }, [page, paginate]);
 
   const totalPages = Math.ceil(filteredIds.length / 6);
+  const events = type === "feat" ? paginatedIds.slice(0, 3) : paginatedIds;
 
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-        {(type === "feat" ? paginatedIds.slice(0, 3) : paginatedIds).map(
-          (id) => (
-            <EventCardContainer key={`event_${id}`} id={id} />
-          )
-        )}
+        {events.map((id) => (
+          <EventCardContainer key={`event_${id}`} id={id} />
+        ))}
       </div>
 
-      {totalPages > 1 && (
+      {totalPages > 1 && events.length > 6 && (
         <div className="join grid grid-cols-2 w-64 mx-auto mt-8">
           <button
             onClick={() => {

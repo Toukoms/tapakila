@@ -10,6 +10,11 @@ type EventCardContainerProps = {
 function EventCardContainer({ id }: EventCardContainerProps) {
   const { error, isLoading, data } = useSWR(`/events/${id}`);
   const event = data as EventProps;
+  const { data: ticketTypesData } = useSWR<TicketTypeProps[]>(
+    `/ticketTypes/event?eventId=${id}`
+  );
+  const ticketTypes = ticketTypesData || [];
+  const eventWithTicketTypes = { ...event, ticketTypes };
   return (
     <div>
       {isLoading ? (
@@ -17,7 +22,7 @@ function EventCardContainer({ id }: EventCardContainerProps) {
       ) : error ? (
         <p>Error fetching event</p>
       ) : (
-        <EventCard {...event} />
+        <EventCard {...eventWithTicketTypes} />
       )}
     </div>
   );

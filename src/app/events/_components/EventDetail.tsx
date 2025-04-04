@@ -41,7 +41,7 @@ function EventDetail({
           <p className="badge badge-lg badge-soft badge-primary mb-4">
             {tag.title}
           </p>
-          <p className="font-bold text-lg flex gap-2 items-center">
+          <p className="font-bold text-lg flex gap-2 items-center mb-6">
             <CiLocationOn size={18} />
             {eventHall.name}, {host.name}
           </p>

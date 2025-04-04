@@ -1,23 +1,28 @@
-import { getSession } from "@/lib/auth";
+import { getUser } from "@/lib/auth";
 import Image from "next/image";
 import React from "react";
-import { LuCalendar, LuTicket } from "react-icons/lu";
+import { LuTicket } from "react-icons/lu";
+import TicketBought from "./TicketBought";
 
 const UserProfile = async () => {
-  const user = await getSession();
+  const user = await getUser();
 
   if (!user) return <div>Loading...</div>;
 
-  const { name, imageUrl, username, email } = user;
+  const { id, name, imageUrl, username, email } = user;
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      {/* Profile Card */}
       <div className="bg-base-100 p-6 border flex flex-col md:flex-row justify-center items-center rounded-md">
         <div tabIndex={0} role="button" className="avatar select-none">
           <div className="w-24 h-24 rounded-full">
             {imageUrl ? (
-              <Image src={imageUrl} alt={user.name} />
+              <Image
+                src={imageUrl}
+                alt={user.name}
+                width={1980}
+                height={1980}
+              />
             ) : (
               <div className="flex items-center justify-center bg-primary font-bold w-full h-full text-primary-content">
                 {user.username.slice(0, 2).toUpperCase()}
@@ -35,31 +40,8 @@ const UserProfile = async () => {
             <p className="text-lg font-semibold">Tickets Bought</p>
             <div className="flex gap-2">
               <LuTicket className="w-6 h-6 text-primary" />
-              <p className="text-xl font-bold">4</p>
+              <TicketBought userId={id} />
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Recent Events */}
-      <div className="card bg-base-100 shadow-md p-6 rounded-2xl">
-        <h3 className="text-lg font-semibold mb-4">Recent Events</h3>
-        <div className="space-y-4">
-          {/* {recentEvents.map((event, index) => (
-            <div key={index} className="flex items-center justify-between border-b pb-2">
-              <div className="flex items-center space-x-3">
-                <LuCalendar className="w-5 h-5 text-green-600" />
-                <p className="text-gray-800 font-medium">{event.name}</p>
-              </div>
-              <div className="badge badge-primary">{event.date}</div>
-            </div>
-          ))} */}
-          <div className="flex items-center justify-between border-b pb-2">
-            <div className="flex items-center space-x-3">
-              <LuCalendar className="w-5 h-5 text-green-600" />
-              <p className="text-gray-800 font-medium">GHOST</p>
-            </div>
-            <div className="badge badge-primary">12 April 2025</div>
           </div>
         </div>
       </div>

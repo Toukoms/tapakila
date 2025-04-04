@@ -3,10 +3,9 @@
 import { useReducer, useMemo, useEffect } from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
 import useSWR from "swr";
+import Checkout from "./Checkout";
 
 function BuyTickets({ eventId }: { eventId: string }) {
-  type TicketTypeWithQts = TicketTypeProps & { quantity: number };
-
   const reducer = (
     state: TicketTypeWithQts[],
     action: {
@@ -35,7 +34,7 @@ function BuyTickets({ eventId }: { eventId: string }) {
             : ticket
         );
       case "reset":
-        return action.payload || []; // ✅ Ensure state is updated when `data` loads
+        return action.payload || [];
       default:
         throw new Error();
     }
@@ -67,7 +66,7 @@ function BuyTickets({ eventId }: { eventId: string }) {
     if (data) {
       dispatch({ type: "reset", payload: ticketsToBuy });
     }
-  }, [data]);
+  }, [data, ticketsToBuy]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error getting tickets</p>;
@@ -129,6 +128,9 @@ function BuyTickets({ eventId }: { eventId: string }) {
         Buy Tickets
       </button>
       <dialog id="my_modal_3" className="modal backdrop-blur-lg bg-base-200/50">
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
         <div className="modal-box">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -170,12 +172,7 @@ function BuyTickets({ eventId }: { eventId: string }) {
           </div>
 
           <div className="mt-4">
-            <button
-              className="btn btn-primary"
-              onClick={() => console.log("confirm the buy")}
-            >
-              Confirm Purchase
-            </button>
+            <Checkout tickets={ticketsToBuyState} />
           </div>
         </div>
       </dialog>

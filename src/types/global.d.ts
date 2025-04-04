@@ -115,3 +115,20 @@ type UserPayload = {
   email: string;
   role: string;
 };
+
+type TicketTypeWithQts = TicketTypeProps & { quantity: number };
+
+type TicketBoughtProps = {
+  eventId: string;
+  title: string;
+  slug: string;
+  ticketType: string;
+  description: string;
+  availableTicket: number;
+  totalTicket: number;
+  ticketNumber: number;
+  price: number;
+  currency: string;
+  createdAt: string;
+  updatedAt: string;
+};

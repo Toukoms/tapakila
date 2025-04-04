@@ -4,6 +4,7 @@ import CountrySelect from "@/components/CountrySelect";
 import ImageUploader from "@/components/ImageUploader";
 import { login } from "@/lib/auth";
 import { useUploadThing } from "@/lib/uploadthing";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { use, useState } from "react";
 import { toast } from "react-toastify";
@@ -88,7 +89,7 @@ function RegisterPage({ searchParams }: SearchParamProps) {
         body: JSON.stringify(user),
       });
       if (res2.status == 200 || res2.status == 201) {
-        toast.success("Image profile uploaded successfully");
+        console.log("Image profile uploaded successfully");
       } else {
         toast.error("Failed to upload image profile");
         setLoading(false);
@@ -104,7 +105,6 @@ function RegisterPage({ searchParams }: SearchParamProps) {
       try {
         await login(userPayload);
         toast.success("Registration successful");
-        window.location.reload();
       } catch (error) {
         console.error("Failed to login", error);
         toast.error("Failed to login. Please try again!");
@@ -112,6 +112,8 @@ function RegisterPage({ searchParams }: SearchParamProps) {
 
       if (url) {
         router.replace(url as string);
+      } else {
+        window.location.reload();
       }
     } else {
       toast.error("Failed to register. Please try again!");
@@ -194,9 +196,9 @@ function RegisterPage({ searchParams }: SearchParamProps) {
         </form>
         <p className="mt-6">
           Already have an account?{" "}
-          <a href="/login" className="link">
+          <Link href={`/login?url=${url}`} className="link">
             Sign In
-          </a>
+          </Link>
         </p>
       </div>
     </div>

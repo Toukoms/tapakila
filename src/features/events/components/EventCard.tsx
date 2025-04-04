@@ -35,7 +35,7 @@ const EventCard: React.FC<EventProps & { className?: string }> = ({
       <Link href={`/events/${id}`} className="w-full h-full">
         <div className="aspect-[16/9] w-full overflow-hidden relative">
           <Image
-            src={eventImage ? eventImage : "error"}
+            src={eventImage}
             alt={title}
             className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
             loading="lazy"

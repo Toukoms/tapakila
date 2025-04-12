@@ -1,5 +1,4 @@
 "use server";
-import { log } from "console";
 import { jwtVerify, SignJWT } from "jose";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
@@ -50,6 +49,7 @@ export async function getUser() {
     const session = cookieStore.get("session");
     if (!session) return null;
     const userSession = await decrypt(session.value);
+    if (!userSession) throw new Error("Failed to decrypt the jwt session!");
     const res = await fetch(`${BASE_URL}/users/${userSession.id}`);
     if (res.status == 200) {
       return (await res.json()) as UserProps;

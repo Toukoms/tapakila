@@ -1,5 +1,6 @@
 "use server";
 import { jwtVerify, SignJWT } from "jose";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 const secretKey = process.env.JWT_SECRET_KEY as string;
@@ -16,10 +17,16 @@ async function encrypt(payload: UserPayload) {
 }
 
 async function decrypt(token: string) {
-  const { payload } = await jwtVerify(token, key, {
-    algorithms: ["HS256"],
-  });
-  return payload as UserPayload;
+  try {
+    const { payload } = await jwtVerify(token, key, {
+      algorithms: ["HS256"],
+    });
+    return payload as UserPayload;
+  } catch (err) {
+    console.error("JWT verification error:", err);
+    logout();
+    return null;
+  }
 }
 
 export async function login(user: UserPayload) {
@@ -27,21 +34,28 @@ export async function login(user: UserPayload) {
   const session = await encrypt(user);
   const cookieStore = await cookies();
   cookieStore.set("session", session, { expires, httpOnly: true });
+  revalidatePath("/");
 }
 
 export async function logout() {
   const cookieStore = await cookies();
   cookieStore.delete("session");
+  revalidatePath("/");
 }
 
 export async function getUser() {
   const cookieStore = await cookies();
-  const session = cookieStore.get("session");
-  if (!session) return null;
-  const userSession = await decrypt(session.value);
-  const res = await fetch(`${BASE_URL}/users/${userSession.id}`);
-  if (res.status == 200) {
-    return (await res.json()) as UserProps;
+  try {
+    const session = cookieStore.get("session");
+    if (!session) return null;
+    const userSession = await decrypt(session.value);
+    if (!userSession) throw new Error("Failed to decrypt the jwt session!");
+    const res = await fetch(`${BASE_URL}/users/${userSession.id}`);
+    if (res.status == 200) {
+      return (await res.json()) as UserProps;
+    }
+  } catch (err) {
+    console.error("Fetch error in getUser():", err);
   }
   return null;
 }

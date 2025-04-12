@@ -172,7 +172,11 @@ function BuyTickets({ eventId }: { eventId: string }) {
           </div>
 
           <div className="mt-4">
-            <Checkout tickets={ticketsToBuyState} />
+            <Checkout
+              tickets={ticketsToBuyState.filter(
+                (ticket) => ticket.quantity > 0
+              )}
+            />
           </div>
         </div>
       </dialog>

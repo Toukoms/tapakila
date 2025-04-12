@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import stripe from "stripe";
 
+const BASE_API_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
+
 export async function POST(req: NextRequest) {
   const body = await req.text();
 
@@ -12,6 +14,7 @@ export async function POST(req: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err) {
+    console.error("[Webhook error]", err);
     return NextResponse.json({ message: "Webhook error", error: err });
   }
 
@@ -21,6 +24,8 @@ export async function POST(req: NextRequest) {
   // CREATE
   if (eventType === "checkout.session.completed") {
     const { id, metadata } = event.data.object;
+
+    console.log("[Webhook] Checkout Session:", event.data.object);
 
     if (!id || !metadata) {
       return NextResponse.json({ message: "Missing data" }, { status: 404 });
@@ -53,24 +58,27 @@ export async function POST(req: NextRequest) {
         paymentConfirmed: true,
       };
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/tickets`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(ticketOrder),
-        }
-      );
+      const res = await fetch(`${BASE_API_URL}/tickets`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(ticketOrder),
+      });
 
-      if (!res.ok || !(res.status === 200 || res.status === 201)) {
+      if (
+        !res.ok ||
+        !(res.status === 200 || res.status === 201) ||
+        res.body === null
+      ) {
         return NextResponse.json({ message: "Error" }, { status: 500 });
       }
     });
 
     // Tickets added to the database
     return NextResponse.json({ message: "OK" });
+  } else {
+    console.log(`[Webhook] Unhandled event type: ${event.type}`);
   }
 
   return new Response("", { status: 200 });

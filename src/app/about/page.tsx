@@ -1,4 +1,5 @@
 import { PhoneCall } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const team = [
@@ -47,9 +48,11 @@ export default function AboutUs() {
             key={i}
             className="border rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
           >
-            <img
+            <Image
               src={member.image}
               alt={member.name}
+              width={1980}
+              height={1980}
               className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             />
             <h3 className="text-xl font-semibold">{member.name}</h3>

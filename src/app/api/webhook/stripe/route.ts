@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   if (eventType === "checkout.session.completed") {
     const { id, metadata } = event.data.object;
 
-    console.log("[Webhook] Checkout Session:", event.data.object);
+    // console.log("[Webhook] Checkout Session:", event.data.object);
 
     if (!id || !metadata) {
       return NextResponse.json({ message: "Missing data" }, { status: 404 });
@@ -65,14 +65,6 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify(ticketOrder),
       });
-
-      if (
-        !res.ok ||
-        !(res.status === 200 || res.status === 201) ||
-        res.body === null
-      ) {
-        return NextResponse.json({ message: "Error" }, { status: 500 });
-      }
     });
 
     // Tickets added to the database

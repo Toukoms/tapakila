@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         paymentConfirmed: true,
       };
 
-      const res = await fetch(`${BASE_API_URL}/tickets`, {
+      await fetch(`${BASE_API_URL}/tickets`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Tickets added to the database
-    return NextResponse.json({ message: "OK" });
+    return NextResponse.json({ message: "Orders created" });
   } else {
     console.log(`[Webhook] Unhandled event type: ${event.type}`);
   }
